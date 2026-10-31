@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>F1 Race Intelligence</title>
+<meta name="description" content="Formula 1 race analytics: interactive Tableau dashboard and story, driver and champion data, and facts about the sport.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="static/css/main.css">
+<link rel="stylesheet" href="static/css/viz.css">
+</head>
+<body>
+
+<div id="preloader">
+  <div class="pre-logo"><span>F1</span> RACE INTELLIGENCE</div>
+  <div class="pre-bar"><i></i></div>
+  <div class="pre-label">Loading analytics engine…</div>
+</div>
+<div id="progress"></div>
+<canvas id="particles"></canvas>
+
+<header id="header">
+  <div class="nav-wrap">
+    <a href="#home" class="logo"><span class="logo-badge">F1</span> RACE INTELLIGENCE</a>
+    <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <nav id="nav">
+      <a href="#home">Home</a><a href="#project">Project</a><a href="#dashboard">Dashboard</a>
+      <a href="#story">Story</a><a href="#gallery">Gallery</a><a href="#insights">Insights</a>
+      <a href="#drivers">Drivers</a><a href="#contact" class="nav-cta">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section id="home" class="hero">
+  <div class="skyline" aria-hidden="true"></div>
+  <div class="speedlines" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="container hero-content">
+    <span class="badge"><span class="live-dot"></span> Live Race Analytics Platform</span>
+    <h1 class="hero-title">FORMULA<span class="red"> 1</span><span class="sub">RACE INTELLIGENCE DASHBOARD</span></h1>
+    <p class="hero-desc">Deep-dive analytics into Formula 1 Championship data — from driver performance metrics and team strategy to circuit analysis and historical championship trends. Powered by Tableau visualization intelligence.</p>
+    <div class="hero-btns">
+      <button class="btn btn-primary" data-show="dashboard"><svg viewBox="0 0 16 16"><path d="M2 14V8h3v6zm4.5 0V2h3v12zM11 14V5h3v9z"/></svg> Show Dashboard</button>
+      <button class="btn btn-outline" data-show="story"><svg viewBox="0 0 16 16"><path d="M8 1a7 7 0 100 14A7 7 0 008 1zM6.5 5l5 3-5 3z"/></svg> Show Story</button>
+    </div>
+    <div class="hero-stats" id="heroStats"></div>
+  </div>
+  <a href="#project" class="scroll-hint" aria-label="Scroll"><i></i><span>Scroll</span></a>
+</section>
+
+<!-- ABOUT -->
+<section id="project" class="section">
+  <div class="container">
+    <div class="sec-head reveal">
+      <h2>F1 Race <span class="red">Intelligence</span></h2>
+      <p>A comprehensive data analytics project that unlocks the secrets of Formula 1 championship performance through interactive Tableau visualizations.</p>
+      <div class="divider"><i></i><b></b><i></i></div>
+    </div>
+    <div class="about-grid">
+      <div class="circuit reveal">
+        <svg viewBox="0 0 400 300" role="img" aria-label="Animated circuit map">
+          <path id="track" d="M60 230 C40 180 70 140 120 130 C170 120 170 70 220 60 C280 50 330 80 340 130 C350 180 300 190 270 200 C230 215 240 250 190 262 C130 275 75 270 60 230Z" fill="none" stroke="#2a2a2e" stroke-width="14" stroke-linejoin="round"/>
+          <path d="M60 230 C40 180 70 140 120 130 C170 120 170 70 220 60 C280 50 330 80 340 130 C350 180 300 190 270 200 C230 215 240 250 190 262 C130 275 75 270 60 230Z" fill="none" stroke="#e10600" stroke-width="2" stroke-dasharray="6 8" opacity=".7"/>
+          <circle r="6" fill="#ffd400"><animateMotion dur="7s" repeatCount="indefinite"><mpath href="#track"/></animateMotion></circle>
+          <circle r="6" fill="#00d2be"><animateMotion dur="8s" begin="-2s" repeatCount="indefinite"><mpath href="#track"/></animateMotion></circle>
+          <circle r="6" fill="#ff8700"><animateMotion dur="9s" begin="-5s" repeatCount="indefinite"><mpath href="#track"/></animateMotion></circle>
+          <text x="52" y="258" fill="#8a8a92" font-size="10" font-family="Orbitron">START / FINISH</text>
+        </svg>
+        <div class="chips"><span class="chip on">Dashboard</span><span class="chip">Tableau</span><span class="chip">Data Story</span></div>
+      </div>
+      <div class="about-text reveal">
+        <h3>Transforming F1 Data Into Championship Intelligence</h3>
+        <p>This project takes Formula 1 race results, qualifying sessions, lap telemetry and championship standings and turns them into an interactive analytics platform built in Tableau — made for fans, analysts and strategists.</p>
+        <p>From pole-position performance to championship trends, the dashboard covers every dimension of modern Formula 1 racing, and the story walks through the key findings step by step.</p>
+        <ul class="points">
+          <li><b>Global Race Overview</b><span>Circuit-by-circuit analysis across all Grand Prix locations with performance comparisons.</span></li>
+          <li><b>Driver Performance Metrics</b><span>Wins, podiums, poles, DNFs and consistency analysis for every driver.</span></li>
+          <li><b>Constructor Championship Battle</b><span>Team points, trends and title history across seasons.</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIMENSIONS -->
+<section id="data" class="section alt">
+  <div class="container">
+    <div class="sec-head reveal">
+      <h2>Intelligence <span class="red">Dimensions</span></h2>
+      <p>Six key analytical dimensions powering our Formula 1 Race Intelligence platform.</p>
+      <div class="divider"><i></i><b></b><i></i></div>
+    </div>
+    <div class="ticker reveal"><span class="ticker-tag">LIVE DATA</span><div class="ticker-track"><div id="tickerInner"></div></div></div>
+    <div class="cards">
+      <article class="card reveal"><div class="ico"><svg viewBox="0 0 24 24"><path d="M9 3L3 5v16l6-2 6 2 6-2V3l-6 2zM9 5.5l6 2v11l-6-2z"/></svg></div><h4>Circuit Analysis</h4><p>Track-by-track performance data from Monaco's tight streets to Monza's high-speed temple — every circuit has its own data fingerprint.</p></article>
+      <article class="card reveal"><div class="ico"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm1 5v5.4l4 2.3-.8 1.3L11 13V7z"/></svg></div><h4>Lap Time Breakdown</h4><p>Sector-by-sector time analysis for every driver across qualifying and race — at millisecond precision.</p></article>
+      <article class="card reveal"><div class="ico"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm0 6a4 4 0 110 8 4 4 0 010-8z"/></svg></div><h4>Tire Strategy</h4><p>Soft, Medium, Hard, Inter, Wet — each compound tells a story. Analyze stint lengths, degradation and optimal strategies.</p></article>
+      <article class="card reveal"><div class="ico"><svg viewBox="0 0 24 24"><path d="M8 11a3 3 0 100-6 3 3 0 000 6zm8 0a3 3 0 100-6 3 3 0 000 6zM8 13c-2.7 0-6 1.3-6 4v2h12v-2c0-2.7-3.3-4-6-4zm8 0c-.3 0-.7 0-1 .1 1.2.9 2 2.1 2 3.9v2h5v-2c0-2.7-3.3-4-6-4z"/></svg></div><h4>Driver Head-to-Head</h4><p>Compare teammates and rivals across qualifying, race pace, podiums, DNFs and championship points throughout a season.</p></article>
+      <article class="card reveal"><div class="ico"><svg viewBox="0 0 24 24"><path d="M3 3h2v16h16v2H3zm4 11l4-5 3 3 5-7 1.6 1.2L14.4 15l-3-3-2.9 3.7z"/></svg></div><h4>Points Progression</h4><p>Watch the championship unfold season by season. Identify the turning points that decided each title fight.</p></article>
+      <article class="card reveal"><div class="ico"><svg viewBox="0 0 24 24"><path d="M6 19a4 4 0 01-.5-8A6 6 0 0117 9.5 4.5 4.5 0 0117.5 19z"/></svg></div><h4>Weather &amp; Safety Cars</h4><p>How wet races, Virtual Safety Cars and full SC deployments affected race outcomes across seasons.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- DASHBOARD -->
+<section id="dashboard" class="section">
+  <div class="container">
+    <div class="sec-head reveal">
+      <h2>Race Intelligence <span class="red">Dashboard</span></h2>
+      <p>Explore the full Formula 1 Race Intelligence Dashboard — interactive charts and season filters, rebuilt from the Tableau dashboard and its F1 dataset.</p>
+      <div class="divider"><i></i><b></b><i></i></div>
+    </div>
+  </div>
+  <div class="wide reveal">
+    <div class="window">
+      <div class="win-bar"><div class="dots"><i class="r"></i><i class="y"></i><i class="g"></i></div><span class="win-title">F1 Race Intelligence Dashboard</span><button class="toggle" id="toggle-dashboard" data-toggle="dashboard">Show Dashboard</button></div>
+      <div class="win-body" id="body-dashboard" hidden>
+        <div class="viz-host" id="host-dashboard"></div>
+        <p class="viz-note">Charts are built from the F1 Racing Project dataset (championship standings, 2010–2026). Hover a bar, point or slice for exact values. <a id="link-dashboard" hidden></a></p>
+      </div>
+      <div class="win-empty" id="empty-dashboard">Press <b>Show Dashboard</b> to load the interactive dashboard.</div>
+    </div>
+  </div>
+</section>
+
+<!-- STORY -->
+<section id="story" class="section alt">
+  <div class="container">
+    <div class="sec-head reveal">
+      <h2>Race Intelligence <span class="red">Story</span></h2>
+      <p>Follow the story from the global overview to championship success, one story point at a time.</p>
+      <div class="divider"><i></i><b></b><i></i></div>
+    </div>
+  </div>
+  <div class="wide reveal">
+    <div class="window">
+      <div class="win-bar"><div class="dots"><i class="r"></i><i class="y"></i><i class="g"></i></div><span class="win-title">Formula 1 Race Intelligence: Story</span><button class="toggle" id="toggle-story" data-toggle="story">Show Story</button></div>
+      <div class="win-body" id="body-story" hidden>
+        <div class="viz-host" id="host-story"></div>
+        <p class="viz-note">Use the tabs or Previous and Next to move through the story points. <a id="link-story" hidden></a></p>
+      </div>
+      <div class="win-empty" id="empty-story">Press <b>Show Story</b> to load the interactive story.</div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery" class="section">
+  <div class="container">
+    <div class="sec-head reveal">
+      <h2>Champions <span class="red">Gallery</span></h2>
+      <p>Every world champion in the dataset, season by season.</p>
+      <div class="divider"><i></i><b></b><i></i></div>
+    </div>
+    <div class="champ-grid" id="champGrid"></div>
+  </div>
+</section>
+
+<!-- INSIGHTS -->
+<section id="insights" class="section alt">
+  <div class="container">
+    <div class="sec-head reveal">
+      <h2>Insights &amp; <span class="red">F1 Facts</span></h2>
+      <p>What the data says, and what makes Formula 1 the pinnacle of motorsport.</p>
+      <div class="divider"><i></i><b></b><i></i></div>
+    </div>
+    <div class="insight-grid">
+      <div class="panel reveal"><h4>Constructor points (dataset)</h4><div id="teamBars" class="bars"></div></div>
+      <div class="panel reveal"><h4>Championships by team (dataset)</h4><div id="titleBars" class="bars"></div></div>
+    </div>
+    <h3 class="sub-h reveal">About the competition</h3>
+    <div class="facts" id="facts"></div>
+    <p class="fine reveal">Dashboard figures are drawn from the supplied F1 Racing Project dataset (simulated sample data), so they may differ from official Formula 1 records.</p>
+  </div>
+</section>
+
+<!-- DRIVERS -->
+<section id="drivers" class="section">
+  <div class="container">
+    <div class="sec-head reveal">
+      <h2>Driver <span class="red">Spotlight</span></h2>
+      <p>The top eight drivers by career points in the dataset.</p>
+      <div class="divider"><i></i><b></b><i></i></div>
+    </div>
+    <div class="driver-grid" id="driverGrid"></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section alt">
+  <div class="container narrow">
+    <div class="sec-head reveal">
+      <h2>Get in <span class="red">Touch</span></h2>
+      <p>Questions about the project or the data? Send a message.</p>
+      <div class="divider"><i></i><b></b><i></i></div>
+    </div>
+    <form class="form reveal" id="contactForm">
+      <div class="row"><label>Name<input name="name" required></label><label>Email<input type="email" name="email" required></label></div>
+      <label>Message<textarea name="message" rows="5" required></textarea></label>
+      <button class="btn btn-primary" type="submit">Send Message</button>
+      <p class="form-msg" id="formMsg" role="status"></p>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="container foot">
+    <span class="logo"><span class="logo-badge">F1</span> RACE INTELLIGENCE</span>
+    <span>Built with Tableau &amp; Flask · Unofficial fan project, not affiliated with Formula 1.</span>
+  </div>
+</footer>
+
+<button id="toTop" aria-label="Back to top"><svg viewBox="0 0 16 16"><path d="M8 3l6 7-1.4 1.2L8 6l-4.6 5.2L2 10z"/></svg></button>
+
+<script src="static/js/viz-data.js"></script>
+<script src="static/js/data.js"></script>
+<script src="static/js/main.js"></script>
+<script src="static/js/viz.js"></script>
+</body>
+</html>
